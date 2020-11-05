@@ -15,7 +15,7 @@ public class KEmoji {
     @Test
     public void emoji() throws SQLException {
         ALoginTest.login();
-        BaseSteps.open("KanbanTool");
+        BaseSteps.open("Только для образования");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
         given().header("content-type", "application/json")
@@ -24,9 +24,8 @@ public class KEmoji {
                 "&token=2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217" +
                 "&text=:thumbsup: ")
                 .then().statusCode(200)
-                .extract()
-                .jsonPath()
-                .get("id");
+                .log()
+                .all();
 
         BaseSteps.close();
     }

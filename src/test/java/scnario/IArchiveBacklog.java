@@ -15,7 +15,7 @@ public class IArchiveBacklog {
     @Test
     public void archiveBacklog() throws SQLException {
         ALoginTest.login();
-        BaseSteps.open("KanbanTool");
+        BaseSteps.open("Только для образования");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
         given().header("content-type", "application/json")

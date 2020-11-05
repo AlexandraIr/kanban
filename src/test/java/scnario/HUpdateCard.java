@@ -28,6 +28,11 @@ public class HUpdateCard {
                 .log()
                 .all();
 
+        BaseSteps.cardIsLocatedIn("Карточка для изучения API", "Done");
+        BaseSteps.changeNames();
+        BaseSteps.changeBackgroundToGreen();
+        BaseSteps.makeCommand();
+
         ALoginTest.driver.close();
     }
 }

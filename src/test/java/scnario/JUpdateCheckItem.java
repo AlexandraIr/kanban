@@ -16,7 +16,7 @@ public class JUpdateCheckItem {
     @Test
     public void updateCheckItem() throws SQLException {
         ALoginTest.login();
-        BaseSteps.open("KanbanTool");
+        BaseSteps.open("Только для образования");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
         given().header("content-type", "application/json")
@@ -28,6 +28,8 @@ public class JUpdateCheckItem {
                 .log()
                 .all();
 
+        BaseSteps.isChecked("Понять протокол HTTP");
+        BaseSteps.isChecked("Выучить методы запросов");
         ALoginTest.driver.close();
     }
 }
