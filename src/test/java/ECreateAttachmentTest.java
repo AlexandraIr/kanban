@@ -1,3 +1,4 @@
+import services.BaseSteps;
 import services.DateProperties;
 import org.junit.Test;
 import services.ALoginTest;
@@ -6,7 +7,7 @@ import java.sql.SQLException;
 
 import static io.restassured.RestAssured.given;
 
-public class ECreateAttachment {
+public class ECreateAttachmentTest {
     public static String idCard = DateProperties.getProperty("idCard");
     public static String pathFile = "src/main/resources/image/image.jpg";
 
@@ -23,6 +24,7 @@ public class ECreateAttachment {
                 .log()
                 .all();
 
+        BaseSteps.waitLoad();
         ALoginTest.driver.close();
     }
 }

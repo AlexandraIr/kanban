@@ -1,3 +1,4 @@
+import services.BaseSteps;
 import services.DateProperties;
 import org.junit.Test;
 import services.ALoginTest;
@@ -6,7 +7,7 @@ import java.sql.SQLException;
 
 import static io.restassured.RestAssured.given;
 
-public class BCreateBoard {
+public class BCreateBoardTest {
 
     @Test
     public void createBoard() throws SQLException {
@@ -24,6 +25,7 @@ public class BCreateBoard {
 
         DateProperties.setProperty("idBoard", id);
 
+        BaseSteps.waitLoad();
         ALoginTest.driver.close();
     }
 }

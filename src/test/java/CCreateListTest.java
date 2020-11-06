@@ -1,3 +1,4 @@
+import services.BaseSteps;
 import services.DateProperties;
 import org.junit.Test;
 import services.ALoginTest;
@@ -5,7 +6,7 @@ import java.sql.SQLException;
 
 import static io.restassured.RestAssured.given;
 
-public class CCreateList {
+public class CCreateListTest {
     public static String idBoard = DateProperties.getProperty("idBoard");
 
     @Test
@@ -37,6 +38,7 @@ public class CCreateList {
         DateProperties.setProperty("idListBacklog", idBacklog);
         DateProperties.setProperty("idListDone", idDone);
 
+        BaseSteps.waitLoad();
         ALoginTest.driver.close();
 
     }

@@ -14,18 +14,17 @@ public class CardPage {
         CardPage.driver = driver;
     }
 
-    @FindBy(xpath = "//span[text()='Карточка для изучения API']/ancestor::a")
-    WebElement cardBTN;
-
     @FindBy(xpath = "//h2[text()='Карточка для изучения API']/ancestor::div[contains(@class, 'card-detail-window')]")
     WebElement card;
 
     @FindBy(xpath = "//a[contains(@class, 'js-close-window')]")
     WebElement close;
 
-    public WebElement getCardBTN() {
-        return cardBTN;
-    }
+    @FindBy(xpath = "//div[@class='card-detail-item js-card-detail-due-date']//a[@role='button']")
+    WebElement checkbox;
+
+    @FindBy(xpath = "//span[text()='скоро истечёт']")
+    WebElement term;
 
     public WebElement getCard() {
         return card;
@@ -33,6 +32,18 @@ public class CardPage {
 
     public WebElement getClose() {
         return close;
+    }
+
+    public WebElement getTerm() {
+        return term;
+    }
+
+    public void checkboxClick() {
+        checkbox.click();
+    }
+
+    public WebElement getCardBTN(String name) {
+        return driver.findElement(By.xpath("//span[text()='" + name + "']/ancestor::a"));
     }
 
     public WebElement getCheckbox(String name) {

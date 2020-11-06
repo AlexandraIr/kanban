@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import static io.restassured.RestAssured.given;
 
-public class DAddCard {
+public class DAddCardTest {
     public static String idList = DateProperties.getProperty("idListBacklog");
 
     @Test
@@ -32,6 +32,7 @@ public class DAddCard {
         BaseSteps.open("KanbanTool");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
+        BaseSteps.waitLoad();
         ALoginTest.driver.close();
     }
 }

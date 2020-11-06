@@ -7,24 +7,26 @@ import java.sql.SQLException;
 
 import static io.restassured.RestAssured.given;
 
-public class IArchiveBacklog {
-    public static String idListBacklog = DateProperties.getProperty("idListBacklog");
+public class GUpdateCheckItemTest {
+    public static String idCard = DateProperties.getProperty("idCard");
+    public static String idCheckItemOne = DateProperties.getProperty("idCheckItemOne");
 
     @Test
-    public void archiveBacklog() throws SQLException {
+    public void updateCheckItem() throws SQLException {
         ALoginTest.login();
-        BaseSteps.open("Только для образования");
+        BaseSteps.open("KanbanTool");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
         given().header("content-type", "application/json")
-                .when().put("https://api.trello.com/1/lists/" + idListBacklog + "/closed" +
+                .when().put("https://api.trello.com/1/cards/" + idCard + "/checkItem/" + idCheckItemOne +
                 "?key=c07319b117a8482513f35d3f97bc7ed1" +
                 "&token=2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217" +
-                "&value=true")
+                "&state=complete")
                 .then().statusCode(200)
                 .log()
                 .all();
 
+        BaseSteps.waitLoad();
         ALoginTest.driver.close();
     }
 }

@@ -7,24 +7,28 @@ import java.sql.SQLException;
 
 import static io.restassured.RestAssured.given;
 
-public class KEmoji {
+public class JUpdateCheckItemTest {
     public static String idCard = DateProperties.getProperty("idCard");
+    public static String idCheckItemTwo = DateProperties.getProperty("idCheckItemTwo");
 
     @Test
-    public void emoji() throws SQLException {
+    public void updateCheckItem() throws SQLException {
         ALoginTest.login();
         BaseSteps.open("Только для образования");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
         given().header("content-type", "application/json")
-                .when().post("https://api.trello.com/1/cards/" + idCard + "/actions/comments" +
+                .when().put("https://api.trello.com/1/cards/" + idCard + "/checkItem/" + idCheckItemTwo +
                 "?key=c07319b117a8482513f35d3f97bc7ed1" +
                 "&token=2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217" +
-                "&text=:thumbsup: ")
+                "&state=complete")
                 .then().statusCode(200)
                 .log()
                 .all();
 
-        BaseSteps.close();
+        BaseSteps.isChecked("Понять протокол HTTP", "Карточка для изучения API");
+        BaseSteps.isChecked("Выучить методы запросов", "Карточка для изучения API");
+        BaseSteps.waitLoad();
+        ALoginTest.driver.close();
     }
 }

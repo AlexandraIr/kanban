@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import static io.restassured.RestAssured.given;
 
-public class FCheckList {
+public class FCheckListTest {
     public static String idCard = DateProperties.getProperty("idCard");
 
     @Test
@@ -50,6 +50,7 @@ public class FCheckList {
         DateProperties.setProperty("idCheckItemOne", idCheckItemOne);
         DateProperties.setProperty("idCheckItemTwo", idCheckItemTwo);
 
+        BaseSteps.waitLoad();
         ALoginTest.driver.close();
 
     }

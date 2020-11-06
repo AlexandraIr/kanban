@@ -1,9 +1,6 @@
 package services;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BoardPage;
@@ -23,9 +20,9 @@ public class BaseSteps {
                 .isDisplayed();
     }
 
-    public static boolean isChecked(String name){
+    public static boolean isChecked(String name, String cardName){
         CardPage cardPage = new CardPage(MainPage.driver);
-        cardPage.getCardBTN().click();
+        cardPage.getCardBTN(cardName).click();
         cardPage.getCard().isDisplayed();
         boolean status = cardPage.getCheckbox(name).isDisplayed();
         cardPage.getClose().click();
@@ -33,7 +30,7 @@ public class BaseSteps {
     }
 
     public static void waitLoad() {
-        (new WebDriverWait(MainPage.driver, 30)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='chrome-container']")));
+        (new WebDriverWait(MainPage.driver, 60)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='chrome-container']")));
     }
 
     public static void open(String name) {
@@ -58,6 +55,7 @@ public class BaseSteps {
         MainPage.driver.findElement(By.xpath("//span[@aria-label='HouseIcon']")).click();
         waitLoad();
         MainPage.driver.findElement(By.xpath("//span[text()='Настройки']")).click();
+        waitLoad();
         MainPage.driver.findElement(By.xpath("//span[text()='Удалить команду']")).click();
         MainPage.driver.findElement(By.xpath("//input[@value='Удалить навсегда']")).click();
 
@@ -95,6 +93,25 @@ public class BaseSteps {
             System.out.println("Карточка " + nameCard + "находится в колонке " + nameList + ".");
         } catch (NoSuchElementException e) {
             System.out.println("Карта не в требуемой колонке!");
+            System.exit(1);
+        }
+    }
+
+    public static void taskCompletedOnTime(String nameCard){
+        CardPage cardPage = new CardPage(MainPage.driver);
+        try {
+            cardPage.getCardBTN(nameCard).click();
+            cardPage.getCard().isDisplayed();
+            try {
+                cardPage.getTerm().isDisplayed();
+            } catch (ElementNotVisibleException e) {
+                System.out.println("Срок выполнения задачи исётк.");
+                System.exit(1);
+        }
+            cardPage.checkboxClick();
+            cardPage.getClose().click();
+        } catch (ElementNotVisibleException e) {
+            System.out.println("Карточка не открылась.");
             System.exit(1);
         }
     }
