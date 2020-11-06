@@ -8,16 +8,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.sql.SQLException;
-
 public class LoginPage {
     public static WebDriver driver;
 
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
+        LoginPage.driver = driver;
     }
 
     @FindBy(xpath = "//section[@class='inner-section']")

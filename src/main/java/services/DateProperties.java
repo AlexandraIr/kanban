@@ -33,7 +33,7 @@ public class DateProperties {
 
             Properties props = new Properties();
             OutputStream output = null;
-            FileInputStream fileInputStream = null;
+            FileInputStream fileInputStream;
             try {
                 fileInputStream = new FileInputStream(fileName);
                 props.load(fileInputStream);
@@ -48,6 +48,7 @@ public class DateProperties {
                 e.printStackTrace();
             } finally {
                 try {
+                    assert output != null;
                     output.close();
                 } catch (IOException e) {
                     e.printStackTrace();

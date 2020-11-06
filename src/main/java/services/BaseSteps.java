@@ -14,19 +14,18 @@ import static io.restassured.RestAssured.given;
 public class BaseSteps {
     public static WebDriver driver;
 
-    public static boolean isDisplayedCard(String name) {
-        return MainPage.driver
+    public static void isDisplayedCard(String name) {
+        MainPage.driver
                 .findElement(By.xpath("//span[text()='" + name + "']/ancestor::a[contains(@class, 'list-card ')]"))
                 .isDisplayed();
     }
 
-    public static boolean isChecked(String name, String cardName){
+    public static void isChecked(String name, String cardName){
         CardPage cardPage = new CardPage(MainPage.driver);
         cardPage.getCardBTN(cardName).click();
         cardPage.getCard().isDisplayed();
-        boolean status = cardPage.getCheckbox(name).isDisplayed();
+        cardPage.getCheckbox(name).isDisplayed();
         cardPage.getClose().click();
-        return status;
     }
 
     public static void waitLoad() {

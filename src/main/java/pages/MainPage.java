@@ -13,7 +13,7 @@ public class MainPage {
 
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
+        MainPage.driver = driver;
     }
 
     @FindBy(xpath = "//div[@class='home-sticky-container']")

@@ -1,18 +1,14 @@
 package services;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
-import java.util.Arrays;
 
 public class Secure {
-    private static byte[] hash;
 
     public static String ScannerPassword() {
         BufferedReader input = null;
@@ -34,7 +30,7 @@ public class Secure {
     }
 
     private static String secureRandom() {
-        MessageDigest messageDigest = null;
+        MessageDigest messageDigest;
         byte[] digest = new byte[0];
 
         try {
@@ -47,12 +43,12 @@ public class Secure {
         }
 
         BigInteger bigInt = new BigInteger(1, digest);
-        String md5Hex = bigInt.toString(16);
+        StringBuilder md5Hex = new StringBuilder(bigInt.toString(16));
 
         while( md5Hex.length() < 32 ){
-            md5Hex = "0" + md5Hex;
+            md5Hex.insert(0, "0");
         }
-        return md5Hex;
+        return md5Hex.toString();
     }
 
     public static String getHash() {
