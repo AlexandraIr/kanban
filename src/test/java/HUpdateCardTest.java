@@ -28,7 +28,7 @@ public class HUpdateCardTest {
                 .all();
 
         BaseSteps.cardIsLocatedIn("Карточка для изучения API", "Done");
-        BaseSteps.changeNames();
+        BaseSteps.changeNames("Только для образования");
         BaseSteps.changeBackgroundToGreen();
         BaseSteps.makeCommand();
 

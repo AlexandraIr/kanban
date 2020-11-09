@@ -82,15 +82,15 @@ public class BaseSteps {
         boardPage.setCreateCommand();
     }
 
-    public static void changeNames(){
+    public static void changeNames(String name){
         BoardPage boardPage = new BoardPage(MainPage.driver);
         boardPage.getNameBoard().click();
-        boardPage.getChangeNameBoard().sendKeys("Только для образования");
+        boardPage.getChangeNameBoard().sendKeys(name);
     }
 
     public static void cardIsLocatedIn(String nameCard, String nameList){
         try {MainPage.driver.findElement(By.xpath("//h2[text()='" + nameList + "']/ancestor::div[@class = 'list js-list-content']//span[text()='" + nameCard + "']")).isDisplayed();
-            System.out.println("Карточка " + nameCard + "находится в колонке " + nameList + ".");
+            System.out.println("Карточка " + nameCard + " находится в колонке " + nameList + ".");
         } catch (NoSuchElementException e) {
             System.out.println("Карта не в требуемой колонке!");
             System.exit(1);
