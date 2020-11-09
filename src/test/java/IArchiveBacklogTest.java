@@ -14,7 +14,9 @@ public class IArchiveBacklogTest {
         String idListBacklog = DateProperties.getProperty("idListBacklog");
 
         ALoginTest.login();
+        BaseSteps.saveScreenshotPNG(ALoginTest.driver);
         BaseSteps.open("Только для образования");
+        BaseSteps.saveScreenshotPNG(ALoginTest.driver);
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
         given().header("content-type", "application/json")

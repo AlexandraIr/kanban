@@ -9,7 +9,6 @@ import static io.restassured.RestAssured.given;
 
 public class GUpdateCheckItemTest {
 
-
     @Test
     public void updateCheckItem() throws SQLException {
         String idCard = DateProperties.getProperty("idCard");

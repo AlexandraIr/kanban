@@ -9,7 +9,6 @@ import static io.restassured.RestAssured.given;
 
 public class HUpdateCardTest {
 
-
     @Test
     public void updateCard() throws SQLException {
         String idCard = DateProperties.getProperty("idCard");

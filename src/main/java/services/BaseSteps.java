@@ -1,5 +1,6 @@
 package services;
 
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -113,5 +114,10 @@ public class BaseSteps {
             System.out.println("Карточка не открылась.");
             System.exit(1);
         }
+    }
+
+    @Attachment(value = "Page screenshot", type = "image/png")
+    public static byte[] saveScreenshotPNG (WebDriver driver) {
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 }

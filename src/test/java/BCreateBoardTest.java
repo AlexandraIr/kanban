@@ -23,6 +23,8 @@ public class BCreateBoardTest {
                 .jsonPath()
                 .get("id");
 
+        BaseSteps.saveScreenshotPNG(ALoginTest.driver);
+
         DateProperties.setProperty("idBoard", id);
 
         BaseSteps.waitLoad();
