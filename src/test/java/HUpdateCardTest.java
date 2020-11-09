@@ -8,11 +8,13 @@ import java.sql.SQLException;
 import static io.restassured.RestAssured.given;
 
 public class HUpdateCardTest {
-    public static String idCard = DateProperties.getProperty("idCard");
-    public static String idListDone = DateProperties.getProperty("idListDone");
+
 
     @Test
     public void updateCard() throws SQLException {
+        String idCard = DateProperties.getProperty("idCard");
+        String idListDone = DateProperties.getProperty("idListDone");
+
         ALoginTest.login();
         BaseSteps.open("KanbanTool");
         BaseSteps.isDisplayedCard("Карточка для изучения API");

@@ -8,11 +8,12 @@ import java.sql.SQLException;
 import static io.restassured.RestAssured.given;
 
 public class ECreateAttachmentTest {
-    public static String idCard = DateProperties.getProperty("idCard");
-    public static String pathFile = "src/main/resources/image/image.jpg";
 
     @Test
     public void createAttachment() throws SQLException {
+        String idCard = DateProperties.getProperty("idCard");
+        String pathFile = "src/main/resources/image/image.jpg";
+
         ALoginTest.login();
 
         given().header("content-type", "application/json")

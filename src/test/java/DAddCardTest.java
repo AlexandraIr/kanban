@@ -8,10 +8,11 @@ import java.sql.SQLException;
 import static io.restassured.RestAssured.given;
 
 public class DAddCardTest {
-    public static String idList = DateProperties.getProperty("idListBacklog");
 
     @Test
     public void addCard() throws SQLException {
+        String idList = DateProperties.getProperty("idListBacklog");
+
         ALoginTest.login();
 
         String id = given().header("content-type", "application/json")

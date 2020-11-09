@@ -8,10 +8,11 @@ import java.sql.SQLException;
 import static io.restassured.RestAssured.given;
 
 public class IArchiveBacklogTest {
-    public static String idListBacklog = DateProperties.getProperty("idListBacklog");
 
     @Test
     public void archiveBacklog() throws SQLException {
+        String idListBacklog = DateProperties.getProperty("idListBacklog");
+
         ALoginTest.login();
         BaseSteps.open("Только для образования");
         BaseSteps.isDisplayedCard("Карточка для изучения API");

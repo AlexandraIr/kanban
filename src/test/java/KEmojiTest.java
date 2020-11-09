@@ -8,10 +8,11 @@ import java.sql.SQLException;
 import static io.restassured.RestAssured.given;
 
 public class KEmojiTest {
-    public static String idCard = DateProperties.getProperty("idCard");
 
     @Test
     public void emoji() throws SQLException {
+        String idCard = DateProperties.getProperty("idCard");
+
         ALoginTest.login();
         BaseSteps.open("Только для образования");
         BaseSteps.isDisplayedCard("Карточка для изучения API");

@@ -8,11 +8,12 @@ import java.sql.SQLException;
 import static io.restassured.RestAssured.given;
 
 public class JUpdateCheckItemTest {
-    public static String idCard = DateProperties.getProperty("idCard");
-    public static String idCheckItemTwo = DateProperties.getProperty("idCheckItemTwo");
 
     @Test
     public void updateCheckItem() throws SQLException {
+        String idCard = DateProperties.getProperty("idCard");
+        String idCheckItemTwo = DateProperties.getProperty("idCheckItemTwo");
+
         ALoginTest.login();
         BaseSteps.open("Только для образования");
         BaseSteps.isDisplayedCard("Карточка для изучения API");

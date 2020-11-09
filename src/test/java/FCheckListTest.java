@@ -8,10 +8,11 @@ import java.sql.SQLException;
 import static io.restassured.RestAssured.given;
 
 public class FCheckListTest {
-    public static String idCard = DateProperties.getProperty("idCard");
 
     @Test
     public void checkList() throws SQLException {
+        String idCard = DateProperties.getProperty("idCard");
+
         ALoginTest.login();
         BaseSteps.open("KanbanTool");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
