@@ -92,8 +92,10 @@ public class BoardPage {
         permissions.click();
         command.click();
 
-        nameCommand.click();
-        changeCommand.click();
+        if (nameCommand.isDisplayed()) {
+            nameCommand.click();
+            changeCommand.click();
+        }
 
         createCommand.click();
         createCommandPopup.isDisplayed();
