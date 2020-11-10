@@ -1,18 +1,16 @@
-import services.DateProperties;
 import org.junit.Test;
 import services.ALoginTest;
 import services.BaseSteps;
-
-import java.sql.SQLException;
+import services.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
 public class GUpdateCheckItemTest {
 
     @Test
-    public void updateCheckItem() throws SQLException {
-        String idCard = DateProperties.getProperty("idCard");
-        String idCheckItemOne = DateProperties.getProperty("idCheckItemOne");
+    public void updateCheckItem() throws Exception {
+        String idCard = DateProperties.getFile("idCard");
+        String idCheckItemOne = DateProperties.getFile("idCheckItemOne");
 
         ALoginTest.login();
         BaseSteps.open("KanbanTool");

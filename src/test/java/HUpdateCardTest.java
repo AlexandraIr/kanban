@@ -3,16 +3,14 @@ import org.junit.Test;
 import services.ALoginTest;
 import services.BaseSteps;
 
-import java.sql.SQLException;
-
 import static io.restassured.RestAssured.given;
 
 public class HUpdateCardTest {
 
     @Test
-    public void updateCard() throws SQLException {
-        String idCard = DateProperties.getProperty("idCard");
-        String idListDone = DateProperties.getProperty("idListDone");
+    public void updateCard() throws Exception {
+        String idCard = DateProperties.getFile("idCard");
+        String idListDone = DateProperties.getFile("idListDone");
 
         ALoginTest.login();
         BaseSteps.open("KanbanTool");

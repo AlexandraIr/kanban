@@ -1,17 +1,16 @@
-import services.DateProperties;
 import org.junit.Test;
 import services.ALoginTest;
 import services.BaseSteps;
+import services.DateProperties;
 import services.FormatStringDate;
-import java.sql.SQLException;
 
 import static io.restassured.RestAssured.given;
 
 public class DAddCardTest {
 
     @Test
-    public void addCard() throws SQLException {
-        String idList = DateProperties.getProperty("idListBacklog");
+    public void addCard() throws Exception {
+        String idList = DateProperties.getFile("idListBacklog");
 
         ALoginTest.login();
 
@@ -28,7 +27,7 @@ public class DAddCardTest {
                 .jsonPath()
                 .get("id");
 
-        DateProperties.setProperty("idCard", id);
+        DateProperties.changeFile("idCard", id);
 
         BaseSteps.open("KanbanTool");
         BaseSteps.isDisplayedCard("Карточка для изучения API");

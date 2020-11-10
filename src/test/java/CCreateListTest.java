@@ -1,17 +1,16 @@
-import services.BaseSteps;
-import services.DateProperties;
 import org.junit.Test;
 import services.ALoginTest;
-import java.sql.SQLException;
+import services.BaseSteps;
+import services.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
 public class CCreateListTest {
-    public static String idBoard = DateProperties.getProperty("idBoard");
 
     @Test
-    public void createList() throws SQLException {
+    public void createList() throws Exception {
         ALoginTest.login();
+        String idBoard = DateProperties.getFile("idBoard");
 
         String idBacklog = given().header("content-type", "application/json")
                 .when().post("https://api.trello.com/1/lists" +
@@ -35,8 +34,8 @@ public class CCreateListTest {
                 .jsonPath()
                 .get("id");
 
-        DateProperties.setProperty("idListBacklog", idBacklog);
-        DateProperties.setProperty("idListDone", idDone);
+        DateProperties.changeFile("idListBacklog", idBacklog);
+        DateProperties.changeFile("idListDone", idDone);
 
         BaseSteps.waitLoad();
         ALoginTest.driver.close();

@@ -1,17 +1,15 @@
-import services.DateProperties;
 import org.junit.Test;
 import services.ALoginTest;
 import services.BaseSteps;
-
-import java.sql.SQLException;
+import services.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
 public class FCheckListTest {
 
     @Test
-    public void checkList() throws SQLException {
-        String idCard = DateProperties.getProperty("idCard");
+    public void checkList() throws Exception {
+        String idCard = DateProperties.getFile("idCard");
 
         ALoginTest.login();
         BaseSteps.open("KanbanTool");
@@ -47,11 +45,9 @@ public class FCheckListTest {
                 .jsonPath()
                 .get("id");
 
-        DateProperties.setProperty("idChecklist", id);
-        DateProperties.setProperty("idCheckItemOne", idCheckItemOne);
-        DateProperties.setProperty("idCheckItemTwo", idCheckItemTwo);
+        DateProperties.changeFile("idCheckItemOne", idCheckItemOne);
+        DateProperties.changeFile("idCheckItemTwo", idCheckItemTwo);
 
-        BaseSteps.waitLoad();
         ALoginTest.driver.close();
 
     }

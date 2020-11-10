@@ -58,6 +58,12 @@ public class BoardPage {
     @FindBy(xpath = "//input[@dir='auto' and contains(@class, 'board')]")
     WebElement changeNameBoard;
 
+    @FindBy(xpath = "//a[@data-boardtype='Free']")
+    WebElement nameCommand;
+
+    @FindBy(xpath = "//a[text()='Сменить команду…']")
+    WebElement changeCommand;
+
     public WebElement getBTNBackground() {
         return btnBackground;
     }
@@ -68,10 +74,6 @@ public class BoardPage {
 
     public List<WebElement> getListColors() {
         return colors;
-    }
-
-    public WebElement getPermissionsLevel() {
-        return permissions;
     }
 
     public WebElement getButtonMenu() {
@@ -87,7 +89,12 @@ public class BoardPage {
     }
 
     public void setCreateCommand() {
+        permissions.click();
         command.click();
+
+        nameCommand.click();
+        changeCommand.click();
+
         createCommand.click();
         createCommandPopup.isDisplayed();
         inputName.sendKeys("test");

@@ -1,16 +1,14 @@
-import services.BaseSteps;
-import services.DateProperties;
 import org.junit.Test;
 import services.ALoginTest;
-
-import java.sql.SQLException;
+import services.BaseSteps;
+import services.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
 public class BCreateBoardTest {
 
     @Test
-    public void createBoard() throws SQLException {
+    public void createBoard() throws Exception {
         ALoginTest.login();
 
         String id = given().header("content-type", "application/json")
@@ -23,9 +21,7 @@ public class BCreateBoardTest {
                 .jsonPath()
                 .get("id");
 
-        BaseSteps.saveScreenshotPNG(ALoginTest.driver);
-
-        DateProperties.setProperty("idBoard", id);
+        DateProperties.changeFile("idBoard", id);
 
         BaseSteps.waitLoad();
         ALoginTest.driver.close();

@@ -1,17 +1,15 @@
-import services.BaseSteps;
-import services.DateProperties;
 import org.junit.Test;
 import services.ALoginTest;
-
-import java.sql.SQLException;
+import services.BaseSteps;
+import services.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
 public class ECreateAttachmentTest {
 
     @Test
-    public void createAttachment() throws SQLException {
-        String idCard = DateProperties.getProperty("idCard");
+    public void createAttachment() throws Exception {
+        String idCard = DateProperties.getFile("idCard");
         String pathFile = "src/main/resources/image/image.jpg";
 
         ALoginTest.login();

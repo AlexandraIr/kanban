@@ -1,22 +1,20 @@
-import services.DateProperties;
 import org.junit.Test;
 import services.ALoginTest;
 import services.BaseSteps;
-
-import java.sql.SQLException;
+import services.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
 public class KEmojiTest {
 
     @Test
-    public void emoji() throws SQLException {
-        String idCard = DateProperties.getProperty("idCard");
+    public void emoji() throws Exception {
+        String idCard = DateProperties.getFile("idCard");
 
         ALoginTest.login();
-        BaseSteps.saveScreenshotPNG(ALoginTest.driver);
+
         BaseSteps.open("Только для образования");
-        BaseSteps.saveScreenshotPNG(ALoginTest.driver);
+
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
         given().header("content-type", "application/json")

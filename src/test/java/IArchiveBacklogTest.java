@@ -1,22 +1,20 @@
-import services.DateProperties;
 import org.junit.Test;
+import services.DateProperties;
 import services.ALoginTest;
 import services.BaseSteps;
-
-import java.sql.SQLException;
 
 import static io.restassured.RestAssured.given;
 
 public class IArchiveBacklogTest {
 
     @Test
-    public void archiveBacklog() throws SQLException {
-        String idListBacklog = DateProperties.getProperty("idListBacklog");
+    public void archiveBacklog() throws Exception {
+        String idListBacklog = DateProperties.getFile("idListBacklog");
 
         ALoginTest.login();
-        BaseSteps.saveScreenshotPNG(ALoginTest.driver);
+
         BaseSteps.open("Только для образования");
-        BaseSteps.saveScreenshotPNG(ALoginTest.driver);
+
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
         given().header("content-type", "application/json")

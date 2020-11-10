@@ -1,6 +1,5 @@
 package services;
 
-import io.qameta.allure.Attachment;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -41,8 +40,8 @@ public class BaseSteps {
         waitLoad();
     }
 
-    public static void close() {
-        String idBoard = DateProperties.getProperty("idBoard");
+    public static void close() throws Exception{
+        String idBoard = DateProperties.getFile("idBoard");
 
         given().header("Accept", "application/json")
                 .when().delete("https://api.trello.com/1/boards/" + idBoard +
@@ -53,6 +52,11 @@ public class BaseSteps {
                 .all();
 
         MainPage.driver.findElement(By.xpath("//span[@aria-label='HouseIcon']")).click();
+        waitLoad();
+        MainPage.driver.findElement(By.xpath("//span[text()='Настройки']")).click();
+        waitLoad();
+        MainPage.driver.findElement(By.xpath("//span[text()='Удалить команду']")).click();
+        MainPage.driver.findElement(By.xpath("//input[@value='Удалить навсегда']")).click();
         waitLoad();
         MainPage.driver.findElement(By.xpath("//span[text()='Настройки']")).click();
         waitLoad();
@@ -78,7 +82,6 @@ public class BaseSteps {
 
     public static void makeCommand(){
         BoardPage boardPage = new BoardPage(MainPage.driver);
-        boardPage.getPermissionsLevel().click();
         boardPage.setCreateCommand();
     }
 
@@ -114,10 +117,5 @@ public class BaseSteps {
             System.out.println("Карточка не открылась.");
             System.exit(1);
         }
-    }
-
-    @Attachment(value = "Page screenshot", type = "image/png")
-    public static byte[] saveScreenshotPNG (WebDriver driver) {
-        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 }
