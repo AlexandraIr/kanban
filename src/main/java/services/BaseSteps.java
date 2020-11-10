@@ -58,10 +58,12 @@ public class BaseSteps {
         MainPage.driver.findElement(By.xpath("//span[text()='Удалить команду']")).click();
         MainPage.driver.findElement(By.xpath("//input[@value='Удалить навсегда']")).click();
         waitLoad();
-        MainPage.driver.findElement(By.xpath("//span[text()='Настройки']")).click();
-        waitLoad();
-        MainPage.driver.findElement(By.xpath("//span[text()='Удалить команду']")).click();
-        MainPage.driver.findElement(By.xpath("//input[@value='Удалить навсегда']")).click();
+        if (MainPage.driver.findElement(By.xpath("//span[text()='Настройки']")).isDisplayed()) {
+            MainPage.driver.findElement(By.xpath("//span[text()='Настройки']")).click();
+            waitLoad();
+            MainPage.driver.findElement(By.xpath("//span[text()='Удалить команду']")).click();
+            MainPage.driver.findElement(By.xpath("//input[@value='Удалить навсегда']")).click();
+        }
 
         MainPage.driver.close();
     }
