@@ -95,6 +95,7 @@ public class BoardPage {
         permissions.click();
         (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@name='org']")));
+        command.isDisplayed();
         command.click();
 
         if (nameCommand.isDisplayed()) {
