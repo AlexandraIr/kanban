@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,7 +32,7 @@ public class BoardPage {
     @FindBy(xpath = "//a[@id='permission-level']")
     WebElement permissions;
 
-    @FindBy(xpath = "//a[@name='org']/span")
+    @FindBy(xpath = "//a[@name='org']/span[@class='sub-name']")
     WebElement command;
 
     @FindBy(xpath = "//span[text()='Меню']/parent::a")
@@ -95,7 +96,11 @@ public class BoardPage {
         permissions.click();
         (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@name='org']")));
-        command.isDisplayed();
+        try {
+            command.isDisplayed();
+        } catch (StaleElementReferenceException e){
+            command.click();
+        }
         command.click();
 
         if (nameCommand.isDisplayed()) {
