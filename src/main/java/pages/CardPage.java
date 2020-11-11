@@ -15,16 +15,16 @@ public class CardPage {
     }
 
     @FindBy(xpath = "//h2[text()='Карточка для изучения API']/ancestor::div[contains(@class, 'card-detail-window')]")
-    WebElement card;
+    private WebElement card;
 
     @FindBy(xpath = "//a[contains(@class, 'js-close-window')]")
-    WebElement close;
+    private WebElement close;
 
     @FindBy(xpath = "//div[@class='card-detail-item js-card-detail-due-date']//a[@role='button']")
-    WebElement checkbox;
+    private WebElement checkbox;
 
     @FindBy(xpath = "//span[text()='скоро истечёт']")
-    WebElement term;
+    private WebElement term;
 
     public WebElement getCard() {
         return card;

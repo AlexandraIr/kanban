@@ -17,19 +17,19 @@ public class LoginPage {
     }
 
     @FindBy(xpath = "//section[@class='inner-section']")
-    WebElement loginPage;
+    private WebElement loginPage;
 
     @FindBy(xpath = "//input[@id='user']")
-    WebElement login;
+    private WebElement login;
 
     @FindBy(xpath = "//input[@id='password']")
-    WebElement password;
+    private WebElement password;
 
     @FindBy(xpath = "//input[@id='login']")
-    WebElement btnLogin;
+    private WebElement btnLogin;
 
     @FindBy(xpath = "//button[@id='login-submit']")
-    WebElement loginSubmit;
+    private  WebElement loginSubmit;
 
     public void inputLogin(String email, String pass) {
         WebDriverWait wait = new WebDriverWait(driver, 10);

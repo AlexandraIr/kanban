@@ -59,11 +59,13 @@ public class BaseSteps {
         MainPage.driver.findElement(By.xpath("//input[@value='Удалить навсегда']")).click();
         waitLoad();
 
-        if (MainPage.driver.findElement(By.xpath("//span[text()='Настройки']")).isDisplayed()) {
+        try {
             MainPage.driver.findElement(By.xpath("//span[text()='Настройки']")).click();
             waitLoad();
             MainPage.driver.findElement(By.xpath("//span[text()='Удалить команду']")).click();
             MainPage.driver.findElement(By.xpath("//input[@value='Удалить навсегда']")).click();
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
         }
 
         MainPage.driver.close();

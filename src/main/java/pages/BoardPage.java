@@ -21,52 +21,52 @@ public class BoardPage {
     }
 
     @FindBy(xpath = "//a[contains(text(), 'Сменить фон')]")
-    WebElement btnBackground;
+    private WebElement btnBackground;
 
     @FindBy(xpath = "//div[text()='Цвета']/parent::div")
-    WebElement color;
+    private WebElement color;
 
     @FindBy(xpath = "//div[@class='board-backgrounds-section-tile']/div")
-    List<WebElement> colors;
+    private List<WebElement> colors;
 
     @FindBy(xpath = "//a[@id='permission-level']")
-    WebElement permissions;
+    private WebElement permissions;
 
     @FindBy(xpath = "//a[@name='org']/span[@class='sub-name']")
-    WebElement command;
+    private WebElement command;
 
     @FindBy(xpath = "//span[text()='Меню']/parent::a")
-    WebElement menu;
+    private WebElement menu;
 
     @FindBy(xpath = "//a[text()='Создать команду']")
-    WebElement createCommand;
+    private WebElement createCommand;
 
     @FindBy(xpath = "//div[@class='pop-over is-shown']")
-    WebElement createCommandPopup;
+    private WebElement createCommandPopup;
 
     @FindBy(xpath = "//input[@name='displayName']")
-    WebElement inputName;
+    private WebElement inputName;
 
     @FindBy(xpath = "//div[text()='Выбрать…']")
-    WebElement btnType;
+    private WebElement btnType;
 
     @FindBy(xpath = "//div[@class='css-11unzgr']//li")
-    List<WebElement> types;
+    private List<WebElement> types;
 
     @FindBy(xpath = "//input[@value='Создать']")
-    WebElement btnCreate;
+    private WebElement btnCreate;
 
     @FindBy(xpath = "//h1[@dir='auto']")
-    WebElement nameBoard;
+    private WebElement nameBoard;
 
     @FindBy(xpath = "//input[@dir='auto' and contains(@class, 'board')]")
-    WebElement changeNameBoard;
+    private WebElement changeNameBoard;
 
     @FindBy(xpath = "//a[@data-boardtype='Free']")
-    WebElement nameCommand;
+    private WebElement nameCommand;
 
     @FindBy(xpath = "//a[text()='Сменить команду…']")
-    WebElement changeCommand;
+    private WebElement changeCommand;
 
     public WebElement getBTNBackground() {
         return btnBackground;
@@ -101,7 +101,6 @@ public class BoardPage {
         } catch (StaleElementReferenceException e){
             command.click();
         }
-        command.click();
 
         if (nameCommand.isDisplayed()) {
             nameCommand.click();
@@ -118,4 +117,23 @@ public class BoardPage {
         else System.exit(1);
         btnCreate.click();
     }
+
+    public void sort() {
+        int[] mas = {1,3,77,2,88,9};
+        int buf;
+        boolean isSorted = false;
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = 0; i< mas.length - 1; i ++) {
+                if (mas[i] > mas[i+1]) {
+                    isSorted = false;
+
+                    buf = mas[i];
+                    mas[i] = mas[i + 1];
+                    mas[i + 1] = buf;
+                }
+            }
+        }
+    }
+
 }

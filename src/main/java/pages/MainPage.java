@@ -17,7 +17,7 @@ public class MainPage {
     }
 
     @FindBy(xpath = "//div[@class='home-sticky-container']")
-    WebElement mainPage;
+    private WebElement mainPage;
 
     public WebElement getMainPage() {
         WebDriverWait wait = new WebDriverWait(driver, 30);
