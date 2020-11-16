@@ -76,9 +76,11 @@ public class BaseSteps {
         BoardPage boardPage = new BoardPage(MainPage.driver);
         if (boardPage.getButtonMenu().isDisplayed())
             boardPage.getButtonMenu().click();
+
         boardPage.getBTNBackground().click();
         boardPage.getColor().click();
         Optional<WebElement> element = boardPage.getListColors().stream().filter(c -> c.getAttribute("style").equals("background-color: rgb(75, 191, 107);")).findFirst();
+
         if (element.isPresent())
         element.get().click();
         else System.exit(1);

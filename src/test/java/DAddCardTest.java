@@ -15,13 +15,14 @@ public class DAddCardTest {
         ALoginTest.login();
 
         String id = given().header("content-type", "application/json")
-                .when().post("https://api.trello.com/1/cards" +
-                        "?key=c07319b117a8482513f35d3f97bc7ed1" +
-                        "&token=2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217" +
-                        "&name=Карточка для изучения API" +
-                        "&idList=" + idList +
-                        "&desc=Тут будет отмечаться прогресс обучения" +
-                        "&due=" + FormatStringDate.date())
+                .baseUri("https://api.trello.com/1")
+                .queryParam("key", "c07319b117a8482513f35d3f97bc7ed1")
+                .queryParam("token", "2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217")
+                .queryParam("name", "Карточка для изучения API")
+                .queryParam("idList", idList)
+                .queryParam("desc", "Тут будет отмечаться прогресс обучения")
+                .queryParam("due", FormatStringDate.date())
+                    .when().post("/cards")
                 .then().statusCode(200)
                 .extract()
                 .jsonPath()

@@ -15,31 +15,34 @@ public class FCheckListTest {
         BaseSteps.open("KanbanTool");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
-        String id = given().header("content-type", "application/json")
-                .when().post("https://api.trello.com/1/cards/" + idCard + "/checklists" +
-                        "?key=c07319b117a8482513f35d3f97bc7ed1" +
-                        "&token=2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217" +
-                        "&name=Прогресс")
+        String id =  given().header("content-type", "application/json")
+                .baseUri("https://api.trello.com/1")
+                .queryParam("key", "c07319b117a8482513f35d3f97bc7ed1")
+                .queryParam("token", "2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217")
+                .queryParam("name", "Прогресс")
+                    .when().post("/cards/" + idCard + "/checklists")
                 .then().statusCode(200)
                 .extract()
                 .jsonPath()
                 .get("id");
 
-        String idCheckItemOne = given().header("content-type", "application/json")
-                .when().post("https://api.trello.com/1/checklists/"+ id + "/checkItems" +
-                "?key=c07319b117a8482513f35d3f97bc7ed1" +
-                "&token=2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217" +
-                "&name=Понять протокол HTTP")
+        String idCheckItemOne =  given().header("content-type", "application/json")
+                .baseUri("https://api.trello.com/1")
+                .queryParam("key", "c07319b117a8482513f35d3f97bc7ed1")
+                .queryParam("token", "2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217")
+                .queryParam("name", "Понять протокол HTTP")
+                    .when().post("/checklists/"+ id + "/checkItems")
                 .then().statusCode(200)
                 .extract()
                 .jsonPath()
                 .get("id");
 
-        String idCheckItemTwo = given().header("content-type", "application/json")
-                .when().post("https://api.trello.com/1/checklists/"+ id + "/checkItems" +
-                        "?key=c07319b117a8482513f35d3f97bc7ed1" +
-                        "&token=2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217" +
-                        "&name=Выучить методы запросов")
+        String idCheckItemTwo =  given().header("content-type", "application/json")
+                .baseUri("https://api.trello.com/1")
+                .queryParam("key", "c07319b117a8482513f35d3f97bc7ed1")
+                .queryParam("token", "2aee767d6f0b111f5f1d44c2501d3bbf4666855d9b8a9380fc0cf669c4c1a217")
+                .queryParam("name", "Выучить методы запросов")
+                    .when().post("/checklists/"+ id + "/checkItems")
                 .then().statusCode(200)
                 .extract()
                 .jsonPath()
