@@ -100,7 +100,7 @@ public class BaseSteps {
 
     public static void cardIsLocatedIn(String nameCard, String nameList){
         try {Thread.sleep(1000);
-            MainPage.driver.findElement(By.xpath("//h2[text()='" + nameList + "']/ancestor::div[@class = 'list js-list-content']//span[text()='" + nameCard + "']")).isDisplayed();
+            MainPage.driver.findElement(By.xpath("//span[text()='" + nameCard + "']/ancestor::div[@class = 'list js-list-content']//h2[text()='" + nameList + "']")).isDisplayed();
             System.out.println("Карточка " + nameCard + " находится в колонке " + nameList + ".");
         } catch (NoSuchElementException | InterruptedException e) {
             System.out.println("Карта не в требуемой колонке!");
