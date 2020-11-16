@@ -99,10 +99,12 @@ public class BaseSteps {
     }
 
     public static void cardIsLocatedIn(String nameCard, String nameList){
-        try {Thread.sleep(1000);
-            MainPage.driver.findElement(By.xpath("//span[text()='" + nameCard + "']/ancestor::div[@class = 'list js-list-content']//h2[text()='" + nameList + "']")).isDisplayed();
+        try {
+            (new WebDriverWait(MainPage.driver, 5)).
+                    until(ExpectedConditions.visibilityOfElementLocated
+                            (By.xpath("//span[text()='" + nameCard + "']/ancestor::div[@class = 'list js-list-content']//h2[text()='" + nameList + "']")));
             System.out.println("Карточка " + nameCard + " находится в колонке " + nameList + ".");
-        } catch (NoSuchElementException | InterruptedException e) {
+        } catch (NoSuchElementException e) {
             System.out.println("Карта не в требуемой колонке!");
             System.exit(1);
         }
