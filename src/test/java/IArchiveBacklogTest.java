@@ -1,6 +1,6 @@
 import org.junit.Test;
-import services.DateProperties;
-import services.ALoginTest;
+import services.date.DateProperties;
+import services.Login;
 import services.BaseSteps;
 
 import static io.restassured.RestAssured.given;
@@ -11,7 +11,7 @@ public class IArchiveBacklogTest {
     public void archiveBacklog() throws Exception {
         String idListBacklog = DateProperties.getFile("idListBacklog");
 
-        ALoginTest.login();
+        Login.login();
 
         BaseSteps.open("Только для образования");
 
@@ -28,6 +28,6 @@ public class IArchiveBacklogTest {
                 .all();
 
         BaseSteps.waitLoad();
-        ALoginTest.driver.close();
+        Login.driver.close();
     }
 }

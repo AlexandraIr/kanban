@@ -1,7 +1,7 @@
 import org.junit.Test;
-import services.ALoginTest;
+import services.Login;
 import services.BaseSteps;
-import services.DateProperties;
+import services.date.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
@@ -12,7 +12,7 @@ public class ECreateAttachmentTest {
         String idCard = DateProperties.getFile("idCard");
         String pathFile = "src/main/resources/image/image.jpg";
 
-        ALoginTest.login();
+        Login.login();
 
         given().header("content-type", "application/json")
                 .baseUri("https://api.trello.com/1")
@@ -25,6 +25,6 @@ public class ECreateAttachmentTest {
                 .all();
 
         BaseSteps.waitLoad();
-        ALoginTest.driver.close();
+        Login.driver.close();
     }
 }

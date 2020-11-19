@@ -1,7 +1,7 @@
 import org.junit.Test;
-import services.ALoginTest;
+import services.Login;
 import services.BaseSteps;
-import services.DateProperties;
+import services.date.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
@@ -11,7 +11,7 @@ public class KEmojiTest {
     public void emoji() throws Exception {
         String idCard = DateProperties.getFile("idCard");
 
-        ALoginTest.login();
+        Login.login();
 
         BaseSteps.open("Только для образования");
 

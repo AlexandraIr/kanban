@@ -1,7 +1,7 @@
 import org.junit.Test;
-import services.ALoginTest;
+import services.Login;
 import services.BaseSteps;
-import services.DateProperties;
+import services.date.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
@@ -12,7 +12,7 @@ public class GUpdateCheckItemTest {
         String idCard = DateProperties.getFile("idCard");
         String idCheckItemOne = DateProperties.getFile("idCheckItemOne");
 
-        ALoginTest.login();
+        Login.login();
         BaseSteps.open("KanbanTool");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
@@ -27,6 +27,6 @@ public class GUpdateCheckItemTest {
                 .all();
 
         BaseSteps.waitLoad();
-        ALoginTest.driver.close();
+        Login.driver.close();
     }
 }

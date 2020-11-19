@@ -1,7 +1,7 @@
 import org.junit.Test;
-import services.ALoginTest;
+import services.Login;
 import services.BaseSteps;
-import services.DateProperties;
+import services.date.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
@@ -11,7 +11,7 @@ public class FCheckListTest {
     public void checkList() throws Exception {
         String idCard = DateProperties.getFile("idCard");
 
-        ALoginTest.login();
+        Login.login();
         BaseSteps.open("KanbanTool");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
@@ -51,7 +51,7 @@ public class FCheckListTest {
         DateProperties.changeFile("idCheckItemOne", idCheckItemOne);
         DateProperties.changeFile("idCheckItemTwo", idCheckItemTwo);
 
-        ALoginTest.driver.close();
+        Login.driver.close();
 
     }
 }

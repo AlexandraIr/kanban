@@ -1,7 +1,7 @@
 import org.junit.Test;
-import services.ALoginTest;
+import services.Login;
 import services.BaseSteps;
-import services.DateProperties;
+import services.date.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
@@ -12,7 +12,7 @@ public class JUpdateCheckItemTest {
         String idCard = DateProperties.getFile("idCard");
         String idCheckItemTwo = DateProperties.getFile("idCheckItemTwo");
 
-        ALoginTest.login();
+        Login.login();
         BaseSteps.open("Только для образования");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
@@ -29,6 +29,6 @@ public class JUpdateCheckItemTest {
         BaseSteps.isChecked("Понять протокол HTTP", "Карточка для изучения API");
         BaseSteps.isChecked("Выучить методы запросов", "Карточка для изучения API");
         BaseSteps.waitLoad();
-        ALoginTest.driver.close();
+        Login.driver.close();
     }
 }

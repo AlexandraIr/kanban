@@ -1,6 +1,6 @@
-import services.DateProperties;
+import services.date.DateProperties;
 import org.junit.Test;
-import services.ALoginTest;
+import services.Login;
 import services.BaseSteps;
 
 import static io.restassured.RestAssured.given;
@@ -12,7 +12,7 @@ public class HUpdateCardTest {
         String idCard = DateProperties.getFile("idCard");
         String idListDone = DateProperties.getFile("idListDone");
 
-        ALoginTest.login();
+        Login.login();
         BaseSteps.open("KanbanTool");
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
@@ -32,6 +32,6 @@ public class HUpdateCardTest {
         BaseSteps.makeCommand();
 
         BaseSteps.waitLoad();
-        ALoginTest.driver.close();
+        Login.driver.close();
     }
 }

@@ -1,5 +1,7 @@
 package services;
 
+import services.date.DataBaseProperties;
+
 import java.sql.*;
 
 public class GetSQLPassword {

@@ -1,7 +1,7 @@
 import org.junit.Test;
-import services.ALoginTest;
+import services.Login;
 import services.BaseSteps;
-import services.DateProperties;
+import services.date.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
@@ -9,7 +9,7 @@ public class BCreateBoardTest {
 
     @Test
     public void createBoard() throws Exception {
-        ALoginTest.login();
+        Login.login();
 
         String id = given().header("content-type", "application/json")
                 .baseUri("https://api.trello.com/1")
@@ -25,6 +25,6 @@ public class BCreateBoardTest {
         DateProperties.changeFile("idBoard", id);
 
         BaseSteps.waitLoad();
-        ALoginTest.driver.close();
+        Login.driver.close();
     }
 }

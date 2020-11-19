@@ -1,7 +1,7 @@
 import org.junit.Test;
-import services.ALoginTest;
+import services.Login;
 import services.BaseSteps;
-import services.DateProperties;
+import services.date.DateProperties;
 
 import static io.restassured.RestAssured.given;
 
@@ -9,7 +9,7 @@ public class CCreateListTest {
 
     @Test
     public void createList() throws Exception {
-        ALoginTest.login();
+        Login.login();
         String idBoard = DateProperties.getFile("idBoard");
 
         String idBacklog = given().header("content-type", "application/json")
@@ -39,7 +39,7 @@ public class CCreateListTest {
         DateProperties.changeFile("idListDone", idDone);
 
         BaseSteps.waitLoad();
-        ALoginTest.driver.close();
+        Login.driver.close();
 
     }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BoardPage;
 import pages.CardPage;
 import pages.MainPage;
+import services.date.DateProperties;
 
 import java.util.Optional;
 

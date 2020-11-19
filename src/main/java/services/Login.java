@@ -4,16 +4,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
 import pages.MainPage;
+import services.date.ConfProperties;
+
 import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
 
-public class ALoginTest {
+public class Login {
     public static LoginPage loginPage;
     public static MainPage mainPage;
     public static WebDriver driver;
 
-    public ALoginTest(){}
+    public Login(){}
 
     public static boolean pass() throws SQLException {
         return Secure.getHash().equals(GetSQLPassword.getPassword());

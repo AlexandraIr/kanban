@@ -1,7 +1,7 @@
 import org.junit.Test;
-import services.ALoginTest;
+import services.Login;
 import services.BaseSteps;
-import services.DateProperties;
+import services.date.DateProperties;
 import services.FormatStringDate;
 
 import static io.restassured.RestAssured.given;
@@ -12,7 +12,7 @@ public class DAddCardTest {
     public void addCard() throws Exception {
         String idList = DateProperties.getFile("idListBacklog");
 
-        ALoginTest.login();
+        Login.login();
 
         String id = given().header("content-type", "application/json")
                 .baseUri("https://api.trello.com/1")
@@ -34,6 +34,6 @@ public class DAddCardTest {
         BaseSteps.isDisplayedCard("Карточка для изучения API");
 
         BaseSteps.waitLoad();
-        ALoginTest.driver.close();
+        Login.driver.close();
     }
 }
