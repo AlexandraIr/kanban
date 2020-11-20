@@ -103,7 +103,7 @@ public class BaseSteps {
         try {
             (new WebDriverWait(MainPage.driver, 5)).
                     until(ExpectedConditions.visibilityOfElementLocated
-                            (By.xpath("//span[text()='" + nameCard + "']/ancestor::div[@class = 'list js-list-content']//h2[text()='" + nameList + "']")));
+                            (By.xpath("//h2[text()='" + nameList + "']/ancestor::div[@class = 'list js-list-content']//span[text()='" + nameCard + "']")));
             System.out.println("Карточка " + nameCard + " находится в колонке " + nameList + ".");
         } catch (NoSuchElementException e) {
             System.out.println("Карта не в требуемой колонке!");
