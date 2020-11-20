@@ -13,8 +13,6 @@ public class HUpdateCardTest {
         String idListDone = DateProperties.getFile("idListDone");
 
         Login.login();
-        BaseSteps.open("KanbanTool");
-        BaseSteps.isDisplayedCard("Карточка для изучения API");
 
         given().header("content-type", "application/json")
                 .baseUri("https://api.trello.com/1")
@@ -26,6 +24,8 @@ public class HUpdateCardTest {
                 .log()
                 .all();
 
+        BaseSteps.open("KanbanTool");
+        BaseSteps.isDisplayedCard("Карточка для изучения API");
         BaseSteps.cardIsLocatedIn("Карточка для изучения API", "Done");
         BaseSteps.changeNames("Только для образования");
         BaseSteps.changeBackgroundToGreen();
